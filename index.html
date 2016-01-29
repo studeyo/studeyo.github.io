@@ -1,60 +1,617 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Studeyo</title>
-<link
-	href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100'
-	rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Gudea' rel='stylesheet' type='text/css'>
-<link rel="shortcut icon" href="studeyo.ico" />
-<style type="text/css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Studeyo, presents Gettng - Makes shopping easier.</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="images/studeyo.ico" />
+  <style type="text/css">
+    html,
+    body {
+      color: #424242;
+      font-family: 'Lato', 'Segoe UI', sans-serif;
+      margin: 0;
+      font-size: 16px;
+      font-weight: 400;
+      width: 100vw;
+      overflow-x: hidden;
+    }
 
-body {
-    color: #404040;
-    font-family: 'Gudea',sans-serif;
-    text-align: center;
-}
-.container {
-    background-color: white;
-    margin-left: 15%;
-    margin-top: 10%;
-    min-width: 400px;
-    padding: 15px;
-    width: 68%;
-}
+    /* Dead Simple Grid (c) 2015 Vladimir Agafonkin */
 
-.note {
-    border-top: 1px dotted #F2682A;
-    text-align: left;
-}
+    .row:before, .row:after {
+        content: "";
+        display: table;
+    }
+    .row:after { clear: both; }
 
-.note p {
-    font-size: 1.5em;
-    text-shadow: 0 0 1px silver;
-}
-.note a {
-    color: #F2682A;
-    text-decoration: none;
-}
-.header img {
-    width: 400px;
-}
+    @media only screen { .col {
+        float: left;
+        width: 100%;
+        box-sizing: border-box;
+    }}
+    /* End of Dead Simple Grid */
 
-</style>
+    .left-align {
+      text-align: left;
+    }
+
+    .right-align {
+      text-align: right;
+    }
+
+    #header {
+      position: fixed;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    #header-brand {
+      width: 40%;
+      text-align: center;
+    }
+
+    #header-menu {
+      width: 49%;
+      padding-top: 10px;
+    }
+
+    #right-menu {
+      margin: 0;
+    }
+
+    #logo-img {
+      width: 10em;
+    }
+
+    .menu-items {
+      text-align: center;
+      display: inline;
+      width: 25%;
+    }
+
+    .menu-items a {
+      text-decoration: none;
+      color: #424242 !important;
+    }
+
+    .nested-menu {
+      list-style-type: none;
+    }
+
+    .nested-menu li:nth-child(2) {
+      font-weight: lighter;
+      font-size: 0.8em;
+      color: #424242 !important;
+    }
+
+    .main-container {
+      background-color: #fff;
+      text-align: center;
+      padding-top: 70px;
+    }
+
+    #studeyo-section {
+      padding-bottom: 70px;
+      padding-left: 12%;
+      padding-right: 12%;
+    }
+
+    .hexagon {
+      height: 100%;
+      padding-top: 5%;
+      width: 50%;
+    }
+
+    .hexagon img {
+      width: 95%;
+    }
+
+    .note {
+      height: 100%;
+      padding-top: 15%;
+      font-size: 1.23em;
+      background-color: #fff;
+      width: 50%;
+    }
+
+    .note p {
+      text-align: justify;
+      padding-left: 10px;
+    }
+
+    #gettng-section {
+      background-color: rgb(252, 230, 200);
+      padding-left: 12%;
+      padding-right: 12%;
+      padding-bottom: 1em;
+    }
+
+    #publisher-section {
+      background-color: rgb(250, 216, 186);
+      padding-left: 12%;
+      padding-right: 12%;
+      padding-bottom: 1em;
+    }
+
+    #advertiser-section {
+      background-color: rgb(252, 230, 200);
+      padding-left: 12%;
+      padding-right: 12%;
+      padding-bottom: 1em;
+    }
+
+    .section-heading {
+      padding-top: 30px;
+      font-size: 1.8em;
+    }
+
+    .section-tag {
+      font-size: 1.23em;
+      margin-bottom: 1.2em;
+    }
+
+    .sub-heading {
+      font-size: 1.5em;
+      color: #502601;
+      margin-top: 1.4em;
+      padding-bottom: 0.5;
+    }
+
+    .product-cards, .advertiser-cards, .publisher-cards{
+      width: 50%;
+      margin-bottom: 1.5em;
+    }
+
+    .cards {
+      padding: 1.5em;
+      border-radius: 0.3em;
+    }
+
+    .card-title {
+      font-size: 1.3em;
+      font-weight: 400;
+      color: #1D1A1A;
+      width: 35%;
+      padding-right: 1em;
+      text-align: right;
+    }
+
+    .card-content {
+      font-weight: 400;
+      color: #3E332A;
+      width: 65%;
+      min-height: 6em;
+      padding: 0.5em 0.5em 0 1em;
+      border-left: 1px solid #DECAB0;
+      border-top: 1px solid #DECAB0;
+      text-align: left;
+    }
+
+    .card-content p{
+      margin: 0 ;
+    }
+
+    #team-section {
+      padding-left: 12%;
+      padding-right: 12%;
+      padding-bottom: 1em;
+    }
+
+    .team-members {
+      margin-top: 2em;
+    }
+
+    .member-detail {
+      margin-bottom: 2em;
+    }
+
+    .member-info {
+      width: 70%;
+    }
+
+    .member-image {
+      width: 30%;
+      padding: 0 1.5em 0 1.5em;
+    }
+
+    .member-image img{
+      margin-top: 1.3em;
+      width: 7em;
+      border-radius: 50%;
+    }
+
+    .member-name {
+      margin-top: 20px;
+      font-size: 1.23em;
+    }
+
+    .member-post {
+      font-size: 1em;
+    }
+
+    #team-section > div.team-members.row > div:nth-child(2) > div:nth-child(1) {
+      display: none;
+    }
+
+    .fa-linkedin-square {
+      margin-left: 0.5em;
+      color: #424242 !important;
+    }
+
+    .fa-linkedin-square:hover {
+      color: #007bb5 !important;
+    }
+
+    .right-align p {
+      padding-left: 25%;
+    }
+
+    .left-align p {
+      padding-right: 25%;
+    }
+
+    #contact-section {
+      background-color: rgb(252, 230, 200);
+      padding-bottom: 1em;
+      padding-left: 12%;
+      padding-right: 12%;
+    }
+
+    #contact-info {
+      z-index: 10;
+      text-align: center;
+      color: #424242;
+      margin-top: 30px;
+    }
+
+    #contact-info div {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    #contact-info a {
+      text-decoration: none;
+      color: #424242;
+    }
+
+    #footer {
+      background-color: #555;
+      color: #eee;
+      padding: 0.5em 0 0.5em 0;
+    }
+
+    #footer p {
+      margin: 0 0 0px;
+    }
+
+    /*Media Queries*/
+    @media only screen and (max-width : 768px) {
+
+      #header-brand {
+        width: 100%;
+      }
+
+      #header-menu {
+        width: 100%;
+        border-top: 1px solid #eee;
+        padding-top: 0;
+      }
+
+      #right-menu, .nested {
+        padding: 0;
+      }
+
+      #right-menu {
+        padding: 0.2em 0 0.2em 0;
+      }
+
+      .menu-items {
+        margin-right: 0;
+        width: 25%;
+      }
+
+      .menu-items a {
+        font-size: 14px;
+      }
+
+      .nested-menu {
+        padding: 0;
+      }
+
+      #right-menu > li:nth-child(3) > a {
+        margin-left: 0;
+      }
+
+      #studeyo-section {
+        padding: 3em 0 0 0;
+      }
+
+      .hexagon {
+        width: 100%;
+      }
+
+      .note {
+        width: 100%;
+      }
+
+      #hex-img {
+        width: 100%;
+      }
+
+      #gettng-section, #publisher-section, #advertiser-section {
+        padding: 0;
+      }
+
+      #team-heading {
+        padding-top: 30px;
+      }
+
+      .note {
+        padding-top: 0;
+      }
+
+      .note p {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+
+      #team-section {
+        padding: 0;
+      }
+
+      .cards {
+        margin: 0 0.5em 0 0.5em;
+        padding: 1.5em 0 1.5em 0em;
+      }
+
+      .product-cards, .publisher-cards, .advertiser-cards {
+        width: 100%;
+      }
+
+      .member-detail {
+        width: 100%;
+        margin-bottom: 0;
+      }
+
+      .member-image {
+        width: 100%;
+      }
+
+      .member-info {
+        width: 100%;
+      }
+
+      .member-description {
+        padding: 0;
+      }
+
+      #team-section > div.team-members.row > div:nth-child(2) > div:nth-child(1) {
+        display: block;
+      }
+
+      #team-section > div.team-members.row > div:nth-child(2) > div.member-image.col.left-align {
+        display: none;
+      }
+
+      .left-align, .right-align {
+        text-align: center;
+      }
+
+      .right-align p, .left-align p {
+        padding: 6px;
+      }
+    }
+
+    @media only screen and (min-width : 769px) and (max-width : 1025px) {
+      #header-brand {
+        width: 37%;
+      }
+
+      #header-menu {
+        width: 52%;
+      }
+    }
+
+    @media only screen and (min-width : 480px) and (max-width : 768px) {
+      #hex-img {
+        width: 80%;
+      }
+    }
+
+  </style>
 
 </head>
+
 <body>
-	<div class="container">
-		<div class="header">
-			<a href="http://studeyo.com"> <img src="studeyo_logo.jpg">
-			</a>
-		</div>
-		<div class="note">
-			<p>
-				We will be launching soon. <br>In the meantime, we can be reached at <a href="mailto:support@studeyo.com">support@studeyo.com</a>
-			</p>
-		</div>
-	</div>
+  <div id="header" class="row">
+    <div id="header-brand" class="col"><a href="http://studeyo.com"><img id="logo-img" src="images/studeyo_logo.jpg"></a></div>
+    <div id="header-menu" class="col">
+      <ul id="right-menu" class="row">
+        <li class="menu-items col"><a href="#" class="scroll"><ul class="nested-menu"><li>COMPANY</li><li>Studeyo</li></ul></a></li>
+        <li class="menu-items col"><a href="#gettng-section" class="scroll"><ul class="nested-menu"><li>PRODUCT</li><li>Gettng</li></ul></a></li>
+        <li class="menu-items col"><a href="#team-section" class="scroll"><ul class="nested-menu"><li>ABOUT US</li><li>Meet the team</li></ul></a></li>
+        <li class="menu-items col"><a href="#contact-section" class="scroll"><ul class="nested-menu"><li>CONTACT</li><li>Get in touch</li></ul></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-container">
+    <section id="studeyo-section">
+      <div class="row home">
+        <div class="hexagon col">
+          <img id="hex-img" src="images/main-image.png">
+        </div>
+
+        <div class="note col">
+          <p>
+            We are a technology company passionate about bringing ease and simplicity in the way users engage with content and brands
+            &ndash; online and offline.
+            <br> Our mission is to create engagement tools which are <b>convenient</b>, <b>contextual</b> and <b>secure</b>.
+            <br>
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="gettng-section">
+      <div class="section-heading">GETTNG</div>
+      <div class="section-tag">what you want. Now!</div>
+      <div class="sub-heading">for SHOPPERS</div>
+      <div id="gettng-description" class="row">
+        <div class="col product-cards">
+          <div class="cards row">
+            <div class="card-title col"><span>Making ‘anywhere shopping’ possible</span></div>
+            <div class="card-content col">
+              <p>Gettng brings the shopping cart to you.
+              Say, you were reading an article on your favorite website and it mentions a product that you want, NOW.
+              <br>Gettng provides shopping options, right there within the page. Just click to shop.</p></div>
+          </div>
+        </div>
+        <div class="col product-cards">
+          <div class="cards row">
+            <div class="card-title col"><span>Product Discovery platform</span></div>
+            <div class="card-content col">
+              <p>Gettng helps you discover the latest, trending products.
+              Now exploring and owning these products is just a click away!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="publisher-section">
+      <div id="publisher-description" class="row">
+      <div class="sub-heading">for PUBLISHERS</div>
+        <div class="col publisher-cards">
+          <div class="cards row">
+            <div class="card-title col"><span>Gettng makes your content shop-able</span></div>
+            <div class="card-content col">
+              <p>Our patent pending algorithm helps curate and identify shopping options within your content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col publisher-cards">
+          <div class="cards row">
+            <div class="card-title col">Your readers will love you, more</div>
+            <div class="card-content col">
+              <p>Gettng is non-intrusive, highly contextual and delivers utmost convenience
+              to your readers thereby improving their overall experience at your site.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col publisher-cards">
+          <div class="cards row">
+            <div class="card-title col"><span>Monetize your content. Effectively.</span></div>
+            <div class="card-content col">
+              <p>Gettng complements the traditional channels of monetization while giving you the opportunity
+              to monetize the very reason your readers come to your website – your content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col publisher-cards">
+          <div class="cards row">
+            <div class="card-title col"><span>Effortless integration with Best-in-class technology</span></div>
+            <div class="card-content col">
+              <p>Designed and built to perform seamlessly. In just one step, enable this amazing functionality for your readers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="advertiser-section">
+      <div id="advertiser-description" class="row">
+        <div class="sub-heading">for ADVERTISERS</div>
+        <div class="col advertiser-cards">
+          <div class="cards row">
+            <div class="card-title col"><span>Location, location, location!</span></div>
+            <div class="card-content col">
+              <p>Be present in the prime real estate of a publisher’s website.
+              No longer will you be lost or ignored by your prospective customers.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col advertiser-cards">
+          <div class="cards row">
+            <div class="card-title col"><span>Right place at the right time</span></div>
+            <div class="card-content col">
+              <p>It is not just the demographics or psychographics of a user, but 
+              communicating within the right context is the catalyst for conversions. Gettng makes this happen.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col advertiser-cards">
+          <div class="cards row">
+            <div class="card-title col"><span>Drive not just any traffic, but high-intent traffic</span></div>
+            <div class="card-content col">
+              <p>Contextual targeting ensures that the traffic visiting your website is high on interest and intent.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col advertiser-cards">
+          <div class="cards row">
+            <div class="card-title col"><span>Showcase of products</span></div>
+            <div class="card-content col">
+              <p>Gettng showcases not just one product but an array of products to the reader.
+              Product discovery now increases your opportunity for conversions and sales.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="team-section">
+      <div id="team-heading" class="section-heading">THE TEAM</div>
+      <div class="team-members row">
+        <div class="member-detail row">
+          <div class="member-image col right-align">
+            <img src="images/skiran.jpg">
+          </div>
+          <div class="member-info col left-align">
+            <div class="member-name"><span>Kiran Subbaraman</span><a href="https://in.linkedin.com/in/kiransubbaraman"><i class="fa fa-linkedin-square"></i></a></div>
+            <div class="member-post">Co-Founder</div>
+            <p class="member-description">
+            He is the technologist, and product guy.
+            With over two decades of experience in building software products he over sees product development,
+            operations, and all things that keeps the product vibrant.</p>
+          </div>
+        </div>
+        <div class="member-detail row">
+          <div class="member-image col">
+            <img src="images/indu.jpg">
+          </div>
+          <div class="member-info col right-align">
+            <div class="member-name"><span>Indu Jayaraman</span><a href="https://in.linkedin.com/in/indujayaraman"><i class="fa fa-linkedin-square"></i></a></div>
+            <div class="member-post">Co-Founder</div>
+            <p class="member-description">
+              A marketeer by profession - she works on everything else -
+              from building the brand to managing the operations,
+              to developing publisher and merchant relations, to also understanding users and their behaviour.</p>
+          </div>
+          <div class="member-image col left-align">
+            <img src="images/indu.jpg">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact-section">
+      <div class="section-heading">CONTACT US</div>
+        <div id="contact-info">
+          Studeyo Technologies LLP
+          <br />#25, 2nd Floor, 8th Main,
+          <br />Vasanthnagar, Bangalore-560 062,
+          <br />Karnataka, India
+          <div id="email"><i class="fa fa-envelope"></i><a href="mailto:support@studeyo.com">&nbsp;&nbsp;support@studeyo.com</a></div>
+          <div id="phone"><i class="fa fa-phone"></i><a href="tel:+919686001234">&nbsp;&nbsp;+91 96860 01234</a></div>
+        </div>
+    </section>
+    <section id="footer-section">
+      <div id="footer">
+        <p>Copyright &copy; 2016 Studeyo Technologies LLP. All Rights Reserved.</p>
+      </div>
+    </section>
+  </div>
 </body>
+
 </html>
