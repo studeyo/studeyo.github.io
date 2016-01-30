@@ -44,6 +44,13 @@
       text-align: right;
     }
 
+    .anchor{
+      display: block;
+      height: 55px;
+      margin-top: -55px;
+      visibility: hidden;
+    }
+
     #header {
       position: fixed;
       width: 100%;
@@ -292,6 +299,10 @@
 
     /*Media Queries*/
     @media only screen and (max-width : 768px) {
+      .anchor{
+        height: 80px;
+        margin-top: -80px;
+      }
 
       #header-brand {
         width: 100%;
@@ -434,9 +445,9 @@
     <div id="header-menu" class="col">
       <ul id="right-menu" class="row">
         <li class="menu-items col"><a href="#" class="scroll"><ul class="nested-menu"><li>COMPANY</li><li>Studeyo</li></ul></a></li>
-        <li class="menu-items col"><a href="#gettng-section" class="scroll"><ul class="nested-menu"><li>PRODUCT</li><li>Gettng</li></ul></a></li>
-        <li class="menu-items col"><a href="#team-section" class="scroll"><ul class="nested-menu"><li>ABOUT US</li><li>Meet the team</li></ul></a></li>
-        <li class="menu-items col"><a href="#contact-section" class="scroll"><ul class="nested-menu"><li>CONTACT</li><li>Get in touch</li></ul></a></li>
+        <li class="menu-items col"><a href="#gettng-anchor" class="scroll"><ul class="nested-menu"><li>PRODUCT</li><li>Gettng</li></ul></a></li>
+        <li class="menu-items col"><a href="#team-anchor" class="scroll"><ul class="nested-menu"><li>ABOUT US</li><li>Meet the team</li></ul></a></li>
+        <li class="menu-items col"><a href="#contact-anchor" class="scroll"><ul class="nested-menu"><li>CONTACT</li><li>Get in touch</li></ul></a></li>
       </ul>
     </div>
   </div>
@@ -457,6 +468,7 @@
         </div>
       </div>
     </section>
+    <span class="anchor" id="gettng-anchor"></span>
     <section id="gettng-section">
       <div class="section-heading">GETTNG</div>
       <div class="section-tag">what you want. Now!</div>
@@ -537,7 +549,7 @@
           <div class="cards row">
             <div class="card-title col"><span>Right place at the right time</span></div>
             <div class="card-content col">
-              <p>It is not just the demographics or psychographics of a user, but 
+              <p>It is not just the demographics or psychographics of a user, but
               communicating within the right context is the catalyst for conversions. Gettng makes this happen.</p>
             </div>
           </div>
@@ -561,6 +573,7 @@
         </div>
       </div>
     </section>
+    <span class="anchor" id="team-anchor"></span>
     <section id="team-section">
       <div id="team-heading" class="section-heading">THE TEAM</div>
       <div class="team-members row">
@@ -595,6 +608,7 @@
         </div>
       </div>
     </section>
+    <span class="anchor" id="contact-anchor"></span>
     <section id="contact-section">
       <div class="section-heading">CONTACT US</div>
         <div id="contact-info">
